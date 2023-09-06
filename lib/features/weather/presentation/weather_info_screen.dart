@@ -17,6 +17,7 @@ class WeatherInfoScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text(
           weatherModel.name ?? "",
           style: TextStyle(
@@ -41,6 +42,12 @@ class WeatherInfoScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
+                    dataConverter(weatherModel.dt ?? 0),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
                     tempConverter(weatherModel.main?.temp ?? 0),
                     style: TextStyle(
                       fontSize: 70,
@@ -50,7 +57,6 @@ class WeatherInfoScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Text() //Я хотел сюда добавить clear, sunny, rainy or smth like this.
                       Text(
                         "${tempConverter(weatherModel.main?.tempMax ?? 0)} / ",
                         style: TextStyle(

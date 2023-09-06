@@ -26,7 +26,12 @@ class SearchScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(controller: controller),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Введите город",
+                ),
+                controller: controller,
+              ),
               SizedBox(height: 20),
               BlocListener<WeatherBloc, WeatherState>(
                 bloc: weatherBloc,
@@ -63,7 +68,6 @@ class SearchScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     controller.text;
-
                     weatherBloc.add(
                       GetWeatherInfoEvent(value: controller.text),
                     );

@@ -24,11 +24,25 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Splash Screen",
-          style: TextStyle(
-            fontSize: 40,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/images/weather_app_splash.png",
+                height: 100,
+                width: 100,
+              ),
+              Text(
+                "WeatherApp",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
           ),
         ),
       ),
