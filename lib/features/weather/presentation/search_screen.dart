@@ -29,6 +29,14 @@ class SearchScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: "Введите город",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 2),
+                  ),
                 ),
                 controller: controller,
               ),
