@@ -6,10 +6,7 @@ import 'package:weather_app/internal/helpers/utils.dart';
 class WeatherInfoScreen extends StatelessWidget {
   final WeatherModel weatherModel;
 
-  const WeatherInfoScreen({
-    super.key,
-    required this.weatherModel,
-  });
+  const WeatherInfoScreen({super.key, required this.weatherModel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +17,7 @@ class WeatherInfoScreen extends StatelessWidget {
         elevation: 0,
         title: Text(
           weatherModel.name ?? "",
-          style: TextStyle(
-            fontSize: 25,
-          ),
+          style: const TextStyle(fontSize: 25),
         ),
         centerTitle: true,
       ),
@@ -43,13 +38,11 @@ class WeatherInfoScreen extends StatelessWidget {
                 children: [
                   Text(
                     dataConverter(weatherModel.dt ?? 0),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   Text(
                     tempConverter(weatherModel.main?.temp ?? 0),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 70,
                       color: Colors.white,
                     ),
@@ -59,63 +52,55 @@ class WeatherInfoScreen extends StatelessWidget {
                     children: [
                       Text(
                         "${tempConverter(weatherModel.main?.tempMax ?? 0)} / ",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+                        style: const TextStyle(fontSize: 20),
                       ),
                       Text(
                         tempConverter(weatherModel.main?.tempMin ?? 0),
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
+                        style: const TextStyle(fontSize: 20),
                       ),
                     ],
                   ),
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Column(
                       children: [
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "Sunrise: ",
                               style: TextStyle(fontSize: 25),
                             ),
                             Text(
                               dataConverter(weatherModel.sys?.sunrise ?? 0),
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                              style: const TextStyle(fontSize: 20),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "Sunset:  ",
                               style: TextStyle(fontSize: 25),
                             ),
                             Text(
                               dataConverter(weatherModel.sys?.sunset ?? 0),
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                              style: const TextStyle(fontSize: 20),
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   CachedNetworkImage(
                     imageUrl:
                         "https://openweathermap.org/img/wn/${weatherModel.weather!.first.icon}@4x.png",
                     progressIndicatorBuilder: (context, url, progress) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     },
                     errorWidget: (context, url, error) {
-                      return Icon(
+                      return const Icon(
                         Icons.error,
                         size: 40,
                         color: Colors.red,

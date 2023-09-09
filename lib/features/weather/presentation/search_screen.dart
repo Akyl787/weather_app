@@ -20,6 +20,7 @@ class SearchScreen extends StatelessWidget {
     final TextEditingController controller = TextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -31,21 +32,22 @@ class SearchScreen extends StatelessWidget {
                   hintText: "Введите город",
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 2),
+                    borderSide: const BorderSide(width: 2),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 2),
+                    borderSide: const BorderSide(width: 2),
                   ),
                 ),
                 controller: controller,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               BlocListener<WeatherBloc, WeatherState>(
                 bloc: weatherBloc,
                 listener: (context, state) {
                   if (state is WeatherInfoLoadingState) {
                     SmartDialog.showLoading(msg: "Загрузка...");
+                    FocusScope.of(context).unfocus();
                   }
 
                   if (state is WeatherInfoErrorState) {
@@ -75,12 +77,12 @@ class SearchScreen extends StatelessWidget {
                 },
                 child: ElevatedButton(
                   onPressed: () {
-                    controller.text;
+                    controller.text = 'london';
                     weatherBloc.add(
                       GetWeatherInfoEvent(value: controller.text),
                     );
                   },
-                  child: Text("Поиск"),
+                  child: const Text("Поиск"),
                 ),
               ),
             ],
